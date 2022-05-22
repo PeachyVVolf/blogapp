@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './Post.css';
 import postImg from '../../images/postImg.jpg';
 
@@ -11,7 +12,7 @@ const Post = () => {
                     <span className='postCat'>Music</span>
                     <span className='postCat'>Life</span>
                 </div>
-                <span className='postTitle'>some random text to put as sample</span>
+                <Link className='link' to='/post/:postId'><span className='postTitle'>some random text to put as sample</span></Link>
                 <hr/>
                 <span className='postDate'>1 hour ago</span>
             </div>

@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import userImg from '../../images/userImg.jpg';
 import './TopBar.css';
 
 function TopBar() {
+    const user=false;
     return (
         <div className='topBar'>
             <div className='topLeft'>
@@ -11,15 +14,23 @@ function TopBar() {
             </div>
             <div className='topCenter'>
                 <ul className='topList'>
-                    <li className='topListItem'>HOME</li>
-                    <li className='topListItem'>ABOUT</li>
-                    <li className='topListItem'>CONTACT</li>
-                    <li className='topListItem'>WRITE</li>
-                    <li className='topListItem'>LOGOUT</li>
+                    <li className='topListItem'><Link className='link' to='/'>HOME</Link></li>
+                    <li className='topListItem'><Link className='link' to='/about'>ABOUT</Link></li>
+                    <li className='topListItem'><Link className='link' to='/contact'>CONTACT</Link></li>
+                    <li className='topListItem'><Link className='link' to='/write'>WRITE</Link></li>
+                    <li className='topListItem'>{user && "LOGOUT"}</li>
                 </ul>
             </div>
             <div className='topRight'>
-                <img className='topImage' src="https://i.pinimg.com/236x/2a/2e/7f/2a2e7f0f60b750dfb36c15c268d0118d.jpg" alt="" />
+                {user ? <img className='topImage' src={userImg} alt="" />
+                : 
+                (
+                    <ul className='topList'>
+                        <li className='topListItem'><Link className='link' to='/login'>LOGIN</Link></li>
+                        <li className='topListItem'><Link className='link' to='/register'>REGISTER</Link></li>
+                    </ul>
+                )
+                }
                 <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
             </div>
         </div>
