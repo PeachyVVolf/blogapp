@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './SideBar.css';
+import axios from 'axios';
 import userImg from '../../images/userImg.jpg';
 
 const SideBar = () => {
+    const [cat, setCat] = useState([]);
+
+    useEffect(()=>{
+        const getCat = async ()=>{
+            const res = await axios.get('/categories');
+            setCat(res.data);
+        }
+        getCat();
+    },[]);
+
     return (
         <div className='sidebar'>
             <div className='sidebarItem'>
@@ -14,11 +25,9 @@ const SideBar = () => {
             <div className='sidebarItem'>
                 <span className='sidebarTitle'>CATEGORIES</span>
                 <ul className='sidebarList'>
-                    <li className='sidebarListItem'><Link className='link' to='/posts?catId=life'>Life</Link></li>
-                    <li className='sidebarListItem'><Link className='link' to='/posts?catId=music'>Music</Link></li>
-                    <li className='sidebarListItem'><Link className='link' to='/posts?catId=style'>Style</Link></li>
-                    <li className='sidebarListItem'><Link className='link' to='/posts?catId=sports'>Sports</Link></li>
-                    <li className='sidebarListItem'><Link className='link' to='/posts?catId=tech'>Tech</Link></li>
+                    {cat.map(c => (
+                        <li className='sidebarListItem'><Link className='link' to={`/?cat=${c.name}`}>{c.name}</Link></li>
+                    ))}
                 </ul>
             </div>
             <div className='sidebarItem'>
