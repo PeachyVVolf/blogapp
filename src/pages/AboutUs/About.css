@@ -1,0 +1,9 @@
+.about{
+    text-align: center;
+}
+.about h1 {
+    margin: 5% 0%;background-color: lightcoral;padding: 5%;color: white;
+}
+.about p {
+    font-size: 25px;
+}

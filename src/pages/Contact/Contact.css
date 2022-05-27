@@ -1,0 +1,16 @@
+.contact{
+    text-align: center;justify-content: center;align-items: center;
+}
+.contact form {
+    text-align: center;background-color: teal;color: white;padding: 10%;width: 40%;margin: auto;margin-top: 10%;
+}
+.contact form > div {
+    margin: 2% 1%;
+}
+.contact form > div > input,
+.contact form > div > textarea {
+    padding: 1%;margin-left: 2%;
+}
+.contact button {
+    background-color: lightcoral;padding: 2% 4%;color: white;border: none;
+}
